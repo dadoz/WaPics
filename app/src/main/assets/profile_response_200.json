@@ -1,0 +1,27 @@
+[
+  {
+    "id":1,
+    "avatar_url":"https://api.adorable.io/avatars/1",
+    "name":"John"
+  },
+  {
+    "id":2,
+    "avatar_url":"https://api.adorable.io/avatars/2",
+    "name":"John"
+  },
+  {
+    "id":3,
+    "avatar_url":"https://api.adorable.io/avatars/3",
+    "name":"John"
+  },
+  {
+    "id":4,
+    "avatar_url":"https://api.adorable.io/avatars/4",
+    "name":"John"
+  },
+  {
+    "id":5,
+    "avatar_url":"https://api.adorable.io/avatars/5",
+    "name":"John"
+  }
+]

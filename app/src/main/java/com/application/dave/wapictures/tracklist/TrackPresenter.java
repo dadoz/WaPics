@@ -3,7 +3,7 @@ package com.application.dave.wapictures.tracklist;
 import android.util.Log;
 import android.util.SparseArray;
 
-import com.application.dave.wapictures.data.TracksRepository;
+import com.application.dave.wapictures.data.ProfileRepository;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -21,13 +21,13 @@ import io.reactivex.schedulers.Schedulers;
 public class TrackPresenter implements TrackContract.TrackPresenterInterface {
     private static final String TAG = "TrackPresenter";
     private static WeakReference<TrackContract.TrackView> trackView;
-    private final TracksRepository repository;
+    private final ProfileRepository repository;
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
     protected ProgressLoader loader;
     private SparseArray<String> params;
 
     @Inject
-    TrackPresenter(TracksRepository repository) {
+    TrackPresenter(ProfileRepository repository) {
         this.repository = repository;
     }
 

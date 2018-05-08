@@ -1,6 +1,6 @@
 package com.application.dave.wapictures.data.remote.services.gson;
 
-import com.application.dave.wapictures.data.model.Track;
+import com.application.dave.wapictures.data.model.Profile;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
@@ -15,16 +15,16 @@ import java.util.List;
 /**
  * track json to a list of track item
  */
-public class TrackJsonDeserializer implements JsonDeserializer<List<Track>> {
+public class TrackJsonDeserializer implements JsonDeserializer<List<Profile>> {
     @Override
-    public List<Track> deserialize(JsonElement json, Type typeOfT,
-                                   JsonDeserializationContext context) throws JsonParseException {
+    public List<Profile> deserialize(JsonElement json, Type typeOfT,
+                                     JsonDeserializationContext context) throws JsonParseException {
         JsonArray itemArray = json.getAsJsonObject().get("message").getAsJsonObject().get("body").getAsJsonObject()
                 .get("track_list").getAsJsonArray();
 
-        List<Track> list = new ArrayList<>();
+        List<Profile> list = new ArrayList<>();
         for (JsonElement item : itemArray) {
-            list.add(new Gson().fromJson(item.getAsJsonObject().get("track").getAsJsonObject(), Track.class));
+            list.add(new Gson().fromJson(item.getAsJsonObject().get("track").getAsJsonObject(), Profile.class));
         }
         return list;
     }

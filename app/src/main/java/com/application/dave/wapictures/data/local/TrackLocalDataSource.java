@@ -4,7 +4,7 @@ package com.application.dave.wapictures.data.local;
 import android.util.Log;
 
 import com.application.dave.wapictures.data.TrackDataSource;
-import com.application.dave.wapictures.data.model.Track;
+import com.application.dave.wapictures.data.model.Profile;
 import com.application.dave.wapictures.data.model.TrackMap;
 
 import java.util.List;
@@ -32,7 +32,7 @@ public class TrackLocalDataSource implements TrackDataSource {
      * @return
      */
     @Override
-    public Observable<List<Track>> getAvatars(String avatarId) {
+    public Observable<List<Profile>> getProfiles(String avatarId) {
         return query(avatarId).<TrackMap>asFlowable().toObservable()
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(TrackMap::getTrackList);
@@ -47,7 +47,7 @@ public class TrackLocalDataSource implements TrackDataSource {
     }
 
     @Override
-    public void setTracks(List<Track> trackList, String paramsKey) {
+    public void setTracks(List<Profile> trackList, String paramsKey) {
         Log.i(getClass().getName(), "[PARAMS_KEY]" + paramsKey);
         realm.executeTransaction(realm1 -> {
                     TrackMap trackMap = realm1.createObject(TrackMap.class, paramsKey);

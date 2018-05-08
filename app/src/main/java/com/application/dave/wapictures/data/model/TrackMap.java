@@ -14,9 +14,9 @@ public class TrackMap extends RealmObject {
     @PrimaryKey
     String trackParamsKey;
 
-    RealmList<Track> trackList = new RealmList<>();
+    RealmList<Profile> trackList = new RealmList<>();
 
-    public void setTrackList(RealmList<Track> trackList) {
+    public void setTrackList(RealmList<Profile> trackList) {
         this.trackList = trackList;
     }
 
@@ -24,7 +24,7 @@ public class TrackMap extends RealmObject {
         this.trackParamsKey = paramsKey;
     }
 
-    public List<Track> getTrackList() {
+    public List<Profile> getTrackList() {
         return trackList;
     }
 }

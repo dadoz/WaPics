@@ -9,20 +9,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.application.dave.wapictures.R;
-import com.application.dave.wapictures.data.model.Track;
+import com.application.dave.wapictures.data.model.Profile;
 import com.application.dave.wapictures.utils.Utils;
 
 import java.util.List;
 
 
 public class TrackListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private List<Track> items;
+    private List<Profile> items;
     private OnTrackItemClickListener listener;
     private OnTrackLoadMoreClickListener listener2;
     private static final int VIEW_TYPE_FOOTER = 1;
     private static final int VIEW_TYPE_CELL = 0;
 
-    public TrackListAdapter(List<Track> devices, OnTrackItemClickListener lst,
+    public TrackListAdapter(List<Profile> devices, OnTrackItemClickListener lst,
                             OnTrackLoadMoreClickListener lst2) {
         items = devices;
         listener = lst;
@@ -47,10 +47,10 @@ public class TrackListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
         if (viewHolder instanceof ViewHolder) {
-            Track track = items.get(position);
-            setAvatar((ViewHolder) viewHolder, track.getAlbumCoverart100x100());
-            ((ViewHolder) viewHolder).trackNameTextview.setText(track.getTrackName());
-            ((ViewHolder) viewHolder).artistNameTextview.setText(track.getArtistName());
+            Profile track = items.get(position);
+            setAvatar((ViewHolder) viewHolder, track.getAvatarUrl());
+            ((ViewHolder) viewHolder).trackNameTextview.setText(track.getName());
+//            ((ViewHolder) viewHolder).artistNameTextview.setText(track.getArtistName());
             if (listener != null)
                 ((ViewHolder) viewHolder).itemView.setOnClickListener(view -> listener.onTrackItemClick(view, items.get(position)));
         }
@@ -78,7 +78,7 @@ public class TrackListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
      * add items from retrieve items
      * @param items
      */
-    public void addItems(List<Track> items) {
+    public void addItems(List<Profile> items) {
         this.items.addAll(items);
         notifyDataSetChanged();
     }
@@ -127,7 +127,7 @@ public class TrackListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
      * track item click cb
      */
     interface OnTrackItemClickListener {
-        void onTrackItemClick(View view, Track item);
+        void onTrackItemClick(View view, Profile item);
     }
     /**
      * track item click cb

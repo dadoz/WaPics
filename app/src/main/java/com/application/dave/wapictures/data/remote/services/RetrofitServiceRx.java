@@ -3,13 +3,8 @@ package com.application.dave.wapictures.data.remote.services;
 
 import com.application.dave.wapictures.BuildConfig;
 import com.application.dave.wapictures.data.model.Lyric;
-import com.application.dave.wapictures.data.model.Track;
 import com.application.dave.wapictures.data.remote.services.gson.LyricsJsonDeserializer;
-import com.application.dave.wapictures.data.remote.services.gson.TrackJsonDeserializer;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
-
-import java.util.List;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -33,7 +28,7 @@ public class RetrofitServiceRx {
                     .client(client)
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create(new GsonBuilder()
-                            .registerTypeAdapter(new TypeToken<List<Track>>(){}.getType(), new TrackJsonDeserializer())
+//                            .registerTypeAdapter(new TypeToken<List<Profile>>(){}.getType(), new TrackJsonDeserializer())
                             .registerTypeAdapter(Lyric.class, new LyricsJsonDeserializer())
                             .create()))
                     .build()

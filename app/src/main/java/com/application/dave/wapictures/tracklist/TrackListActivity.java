@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 
 import com.application.dave.wapictures.R;
-import com.application.dave.wapictures.data.model.Track;
+import com.application.dave.wapictures.data.model.Profile;
 import com.application.dave.wapictures.lyric.LyricActivity;
 import com.application.dave.wapictures.ui.EmptyView;
 import com.application.dave.wapictures.utils.Utils;
@@ -98,7 +98,7 @@ public class TrackListActivity extends DaggerAppCompatActivity implements TrackC
     }
 
     @Override
-    public void onRenderData(List<Track> items) {
+    public void onRenderData(List<Profile> items) {
         progressBar.setVisibility(View.GONE);
         emptyView.setVisibility(View.GONE);
         initRecyclerView(items);
@@ -128,7 +128,7 @@ public class TrackListActivity extends DaggerAppCompatActivity implements TrackC
      * init recycler view binding data by adapter
      * @param items
      */
-    private void initRecyclerView(List<Track> items) {
+    private void initRecyclerView(List<Profile> items) {
         if (items.size() == 0) {
             return;
         }
@@ -145,9 +145,10 @@ public class TrackListActivity extends DaggerAppCompatActivity implements TrackC
     }
 
     @Override
-    public void onTrackItemClick(View view, Track track) {
-        Intent intent = LyricActivity.buildIntent(this, track.getTrackId(), track.getArtistName(),
-                track.getTrackName(), track.getAlbumCoverart100x100());
+    public void onTrackItemClick(View view, Profile track) {
+//        Intent intent = LyricActivity.buildIntent(this, track.getTrackId(), track.getArtistName(),
+//                track.getTrackName(), track.getAlbumCoverart100x100());
+        Intent intent = new Intent(this, LyricActivity.class);
         startActivity(intent);
 
     }

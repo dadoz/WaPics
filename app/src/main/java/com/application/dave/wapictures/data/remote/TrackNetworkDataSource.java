@@ -1,7 +1,7 @@
 package com.application.dave.wapictures.data.remote;
 
 import com.application.dave.wapictures.data.TrackDataSource;
-import com.application.dave.wapictures.data.model.Track;
+import com.application.dave.wapictures.data.model.Profile;
 import com.application.dave.wapictures.data.remote.services.RetrofitServiceRx;
 
 import java.util.List;
@@ -21,7 +21,7 @@ public class TrackNetworkDataSource extends RetrofitDataSourceBase implements Tr
      * @param avatarId
      * @return
      */
-    public Observable<List<Track>> getAvatars(String avatarId) {
+    public Observable<List<Profile>> getProfiles(String avatarId) {
         return new RetrofitServiceRx().getSoundtrackRetrofit()
                 .getAvatars(avatarId)
                 .compose(handleRxErrorsTransformer());
@@ -31,7 +31,7 @@ public class TrackNetworkDataSource extends RetrofitDataSourceBase implements Tr
      * @param stargazers
      */
     @Override
-    public void setTracks(List<Track> stargazers, String paramsKey) {
+    public void setTracks(List<Profile> stargazers, String paramsKey) {
     }
 
     @Override
