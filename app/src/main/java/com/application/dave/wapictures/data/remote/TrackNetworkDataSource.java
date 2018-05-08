@@ -18,16 +18,12 @@ import io.reactivex.Observable;
 public class TrackNetworkDataSource extends RetrofitDataSourceBase implements TrackDataSource {
     /**
      *
-     * @param page
-     * @param pageSize
-     * @param country
-     * @param fHasLyrics
-     * @param apiKey
+     * @param avatarId
      * @return
      */
-    public Observable<List<Track>> getTracks(String page, String pageSize, String country, String fHasLyrics, String apiKey) {
+    public Observable<List<Track>> getAvatars(String avatarId) {
         return new RetrofitServiceRx().getSoundtrackRetrofit()
-                .getTracks(page, pageSize, country, fHasLyrics, apiKey)
+                .getAvatars(avatarId)
                 .compose(handleRxErrorsTransformer());
     }
 

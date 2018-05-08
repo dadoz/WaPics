@@ -10,8 +10,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        buildConfigField "String", "MXM_BASE_URL", "\"http://api.musixmatch.com/ws/1.1/\""
-        buildConfigField "String", "API_KEY", "\"1c9e075968d686e586bc8bee13b82ca0\""
+        buildConfigField "String", "MXM_BASE_URL", "\"https://api.adorable.io/\""
 
     }
     compileOptions {

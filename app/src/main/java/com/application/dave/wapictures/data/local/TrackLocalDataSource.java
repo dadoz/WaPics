@@ -6,7 +6,6 @@ import android.util.Log;
 import com.application.dave.wapictures.data.TrackDataSource;
 import com.application.dave.wapictures.data.model.Track;
 import com.application.dave.wapictures.data.model.TrackMap;
-import com.application.dave.wapictures.utils.Utils;
 
 import java.util.List;
 
@@ -30,17 +29,11 @@ public class TrackLocalDataSource implements TrackDataSource {
     }
     /**
      *
-     * @param page
-     * @param pageSize
-     * @param country
-     * @param fHasLyrics
-     * @param apiKey
      * @return
      */
     @Override
-    public Observable<List<Track>> getTracks(String page, String pageSize, String country, String fHasLyrics, String apiKey) {
-        String paramKey = Utils.getTrackParamsKey(page, pageSize, country, fHasLyrics);
-        return query(paramKey).<TrackMap>asFlowable().toObservable()
+    public Observable<List<Track>> getAvatars(String avatarId) {
+        return query(avatarId).<TrackMap>asFlowable().toObservable()
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(TrackMap::getTrackList);
     }

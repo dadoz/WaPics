@@ -1,6 +1,5 @@
 package com.application.dave.wapictures.data;
 
-import com.application.dave.wapictures.BuildConfig;
 import com.application.dave.wapictures.data.local.Local;
 import com.application.dave.wapictures.data.model.Track;
 import com.application.dave.wapictures.data.remote.Remote;
@@ -43,7 +42,7 @@ public class TracksRepository {
 
         //show data from netwkor and added on cache if some result
         return networkDataSource
-                .getTracks(page, pageSize, country, fHasLyrics, BuildConfig.API_KEY)
+                .getAvatars(page)
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnNext(list -> localDataSource.setTracks(list, paramsKey));
     }
