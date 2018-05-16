@@ -4,7 +4,7 @@ import android.app.Application;
 
 import com.application.dave.wapictures.SoundtrackApplication;
 import com.application.dave.wapictures.data.LyricsRepositoryModule;
-import com.application.dave.wapictures.data.TracksRepositoryModule;
+import com.application.dave.wapictures.data.ProfileRepositoryModule;
 
 import javax.inject.Singleton;
 
@@ -16,7 +16,7 @@ import dagger.android.support.AndroidSupportInjectionModule;
 @Singleton
 @Component(modules = {
         LyricsRepositoryModule.class,
-        TracksRepositoryModule.class,
+        ProfileRepositoryModule.class,
         ApplicationModule.class,
         ActivityBindingModule.class,
         AndroidSupportInjectionModule.class})

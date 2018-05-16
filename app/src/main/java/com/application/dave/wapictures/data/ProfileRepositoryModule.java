@@ -1,7 +1,11 @@
 package com.application.dave.wapictures.data;
 
+import android.content.Context;
+
 import com.application.dave.wapictures.data.local.Local;
 import com.application.dave.wapictures.data.local.TrackLocalDataSource;
+import com.application.dave.wapictures.data.mock.Mock;
+import com.application.dave.wapictures.data.mock.MockTrackLocalDataSource;
 import com.application.dave.wapictures.data.remote.Remote;
 import com.application.dave.wapictures.data.remote.TrackNetworkDataSource;
 
@@ -12,7 +16,7 @@ import dagger.Provides;
 import io.realm.Realm;
 
 @Module
-public class TracksRepositoryModule {
+public class ProfileRepositoryModule {
     @Provides
     Realm provideRealm() {
         return Realm.getDefaultInstance();
@@ -21,15 +25,22 @@ public class TracksRepositoryModule {
     @Provides
     @Singleton
     @Local
-    TrackDataSource provideStargazerLocalDataSource(Realm realm) {
+    TrackDataSource provideProfileLocalDataSource(Realm realm) {
         return new TrackLocalDataSource(realm);
     }
 
     @Provides
     @Singleton
     @Remote
-    TrackDataSource provideStargazerRemoteDataSource() {
+    TrackDataSource provideProfileRemoteDataSource() {
         return new TrackNetworkDataSource();
+    }
+
+    @Provides
+    @Singleton
+    @Mock
+    TrackDataSource provideProfileMockDataSource(Context context) {
+        return new MockTrackLocalDataSource(context);
     }
 
 }

@@ -18,9 +18,8 @@
         android:layout_gravity="center"
         style="@style/Widget.AppCompat.ProgressBar"/>
     <android.support.v7.widget.RecyclerView
-        android:background="@android:color/holo_orange_dark"
         android:id="@+id/trackRecyclerViewId"
         android:visibility="gone"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"/>
 </FrameLayout>
