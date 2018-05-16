@@ -8,7 +8,7 @@ public class Profile extends RealmObject {
 
     @PrimaryKey
     String id;
-    @SerializedName("avatar_name")
+    @SerializedName("avatar_url")
     String avatarUrl;
     @SerializedName("name")
     String name;

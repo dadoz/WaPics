@@ -133,7 +133,7 @@ public class TrackListActivity extends DaggerAppCompatActivity implements TrackC
             return;
         }
         recyclerView.setVisibility(View.VISIBLE);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
         if (recyclerView.getAdapter() == null) {
             recyclerView.setAdapter(new TrackListAdapter(items, this, this));
