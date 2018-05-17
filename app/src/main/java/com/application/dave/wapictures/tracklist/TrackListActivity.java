@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.SparseArray;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -67,7 +68,7 @@ public class TrackListActivity extends DaggerAppCompatActivity implements TrackC
     private void onInitView() {
         initActionbar();
         presenter.bindView(this);
-        presenter.retrieveItems(Utils.getTrackParamsFromBundle(getIntent().getExtras().getBundle(TRACK_PARAMS_KEY)));
+        presenter.retrieveItems(new SparseArray<>());//Utils.getTrackParamsFromBundle(getIntent().getExtras().getBundle(TRACK_PARAMS_KEY)));
     }
 
     /**

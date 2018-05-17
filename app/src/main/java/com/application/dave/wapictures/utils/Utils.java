@@ -1,6 +1,5 @@
 package com.application.dave.wapictures.utils;
 
-import android.content.Context;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.util.SparseArray;
@@ -8,6 +7,7 @@ import android.widget.ImageView;
 
 import com.application.dave.wapictures.R;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.io.InputStream;
 
@@ -107,13 +107,12 @@ public class Utils {
      */
     public static void renderIcon(ImageView avatarImageView, String avatarUrl) {
         if (avatarUrl == null) {
-            Glide.clear(avatarImageView);
             return;
         }
 
         Glide.with(avatarImageView.getContext())
                 .load(avatarUrl)
-                .placeholder(R.mipmap.github_placeholder)
+                .apply(new RequestOptions().placeholder(R.mipmap.github_placeholder).circleCropTransform())
                 .into(avatarImageView);
     }
 }

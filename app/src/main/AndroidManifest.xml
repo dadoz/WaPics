@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:name=".SoundtrackApplication"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".tracklist.TrackListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".tracklist.TrackListActivity"/>
+        <!--<activity android:name=".tracklist.TrackListActivity"/>-->
         <activity android:name=".lyric.LyricActivity"/>
     </application>
 

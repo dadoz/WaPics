@@ -60,6 +60,7 @@ dependencies {
 //    implementation 'io.reactivex.rxjava2:rxjava:2.1.12'
     //glide pics
     implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
     //gson converter
     implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
     //mock server

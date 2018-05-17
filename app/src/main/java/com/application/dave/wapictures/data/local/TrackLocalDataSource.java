@@ -49,10 +49,10 @@ public class TrackLocalDataSource implements TrackDataSource {
     @Override
     public void setTracks(List<Profile> trackList, String paramsKey) {
         Log.i(getClass().getName(), "[PARAMS_KEY]" + paramsKey);
-        realm.executeTransaction(realm1 -> {
-                    TrackMap trackMap = realm1.createObject(TrackMap.class, paramsKey);
-                    trackMap.getTrackList().addAll(realm1.copyToRealmOrUpdate(trackList));
-                });
+//        realm.executeTransaction(realm1 -> {
+//            TrackMap trackMap = realm1.createObject(TrackMap.class, paramsKey);
+//            trackMap.getTrackList().addAll(realm1.copyToRealmOrUpdate(trackList));
+//        });
     }
 
     /**
