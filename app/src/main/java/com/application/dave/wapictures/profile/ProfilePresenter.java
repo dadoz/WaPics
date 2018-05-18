@@ -1,4 +1,4 @@
-package com.application.dave.wapictures.tracklist;
+package com.application.dave.wapictures.profile;
 
 import android.util.Log;
 import android.util.SparseArray;
@@ -18,16 +18,16 @@ import io.reactivex.functions.Action;
 import io.reactivex.schedulers.Schedulers;
 
 @Singleton
-public class TrackPresenter implements TrackContract.TrackPresenterInterface {
+public class ProfilePresenter implements ProfileContract.ProfilePresenterInterface {
     private static final String TAG = "TrackPresenter";
-    private static WeakReference<TrackContract.TrackView> trackView;
+    private static WeakReference<ProfileContract.ProfileView> trackView;
     private final ProfileRepository repository;
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
     protected ProgressLoader loader;
     private SparseArray<String> params;
 
     @Inject
-    TrackPresenter(ProfileRepository repository) {
+    ProfilePresenter(ProfileRepository repository) {
         this.repository = repository;
     }
 
@@ -42,7 +42,7 @@ public class TrackPresenter implements TrackContract.TrackPresenterInterface {
      * @param view
      */
     @Override
-    public void bindView(TrackContract.TrackView view) {
+    public void bindView(ProfileContract.ProfileView view) {
         trackView = new WeakReference<>(view);
         loader = new ProgressLoader(
                 view::showStandardLoading,

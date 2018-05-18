@@ -23,7 +23,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import dagger.android.support.DaggerAppCompatActivity;
 
-import static com.application.dave.wapictures.tracklist.TrackListActivity.LYRICS_PARAMS_KEY;
+import static com.application.dave.wapictures.profile.ProfileListActivity.LYRICS_PARAMS_KEY;
 
 /**
  * stargazer activity

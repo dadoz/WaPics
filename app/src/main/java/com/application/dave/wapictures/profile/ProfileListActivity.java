@@ -1,4 +1,4 @@
-package com.application.dave.wapictures.tracklist;
+package com.application.dave.wapictures.profile;
 
 import android.content.Context;
 import android.content.Intent;
@@ -31,8 +31,8 @@ import static com.application.dave.wapictures.MainActivity.TRACK_PARAMS_KEY;
 /**
  * stargazer activity
  */
-public class TrackListActivity extends DaggerAppCompatActivity implements TrackContract.TrackView,
-        TrackListAdapter.OnTrackItemClickListener, TrackListAdapter.OnTrackLoadMoreClickListener {
+public class ProfileListActivity extends DaggerAppCompatActivity implements ProfileContract.ProfileView,
+        ProfileListAdapter.OnTrackItemClickListener, ProfileListAdapter.OnTrackLoadMoreClickListener {
     public static final String LYRICS_PARAMS_KEY = "LYRICS_PARAMS_KEY";
     @BindView(R.id.trackRecyclerViewId)
     RecyclerView recyclerView;
@@ -42,14 +42,14 @@ public class TrackListActivity extends DaggerAppCompatActivity implements TrackC
     EmptyView emptyView;
 
     @Inject
-    TrackPresenter presenter;
+    ProfilePresenter presenter;
 
     private Unbinder unbinder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_track_list);
+        setContentView(R.layout.activity_profile_list);
         unbinder = ButterKnife.bind(this);
         onInitView();
     }
@@ -105,6 +105,12 @@ public class TrackListActivity extends DaggerAppCompatActivity implements TrackC
         initRecyclerView(items);
     }
 
+//    private void initProfileExpandedRv(List<Profile> items) {
+//        GridLayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 3);
+//        profileExpandedRecyclerView.setLayoutManager(layoutManager);
+//        profileExpandedRecyclerView.setAdapter(new ProfileListAdapter(items, this, this));
+//    }
+
 
     @Override
     public void onError(String error) {
@@ -136,14 +142,8 @@ public class TrackListActivity extends DaggerAppCompatActivity implements TrackC
         recyclerView.setVisibility(View.VISIBLE);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
-        if (recyclerView.getAdapter() == null) {
-            recyclerView.setAdapter(new TrackListAdapter(items, this, this));
-        } else {
-            ((TrackListAdapter) recyclerView.getAdapter()).addItems(items);
-            recyclerView.smoothScrollToPosition(recyclerView.getAdapter().getItemCount() - 2);
-        }
-
-    }
+        recyclerView.setAdapter(new ProfileListAdapter(items, this, this));
+     }
 
     @Override
     public void onTrackItemClick(View view, Profile track) {
@@ -165,7 +165,7 @@ public class TrackListActivity extends DaggerAppCompatActivity implements TrackC
      */
     public static Intent buildIntent(Context context, String country, String pageSize, String hasLyricsCheckbox, String initialPage) {
         Bundle bundle = Utils.buildTrackParams(country, pageSize, hasLyricsCheckbox, initialPage);
-        Intent intent = new Intent(context, TrackListActivity.class);
+        Intent intent = new Intent(context, ProfileListActivity.class);
         intent.putExtra(TRACK_PARAMS_KEY, bundle);
         return intent;
     }

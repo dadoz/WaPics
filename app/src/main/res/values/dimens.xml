@@ -6,4 +6,6 @@
     <dimen name="font_18">18sp</dimen>
     <dimen name="icon_width">50dp</dimen>
     <dimen name="font_12">12sp</dimen>
+    <dimen name="padding_16dp">16dp</dimen>
+    <dimen name="padding_16">16dp</dimen>
 </resources>

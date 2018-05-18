@@ -2,8 +2,8 @@ package com.application.dave.wapictures.di;
 
 import com.application.dave.wapictures.lyric.LyricActivity;
 import com.application.dave.wapictures.lyric.LyricPresenterModule;
-import com.application.dave.wapictures.tracklist.TrackListActivity;
-import com.application.dave.wapictures.tracklist.TrackPresenterModule;
+import com.application.dave.wapictures.profile.ProfileListActivity;
+import com.application.dave.wapictures.profile.ProfilePresenterModule;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -18,8 +18,8 @@ import dagger.android.ContributesAndroidInjector;
 @Module
 public abstract class ActivityBindingModule {
     @ActivityScoped
-    @ContributesAndroidInjector(modules = TrackPresenterModule.class)
-    abstract TrackListActivity tasksActivity();
+    @ContributesAndroidInjector(modules = ProfilePresenterModule.class)
+    abstract ProfileListActivity tasksActivity();
 
     @ActivityScoped
     @ContributesAndroidInjector(modules = LyricPresenterModule.class)

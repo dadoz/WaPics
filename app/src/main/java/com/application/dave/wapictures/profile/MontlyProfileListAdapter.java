@@ -1,4 +1,4 @@
-package com.application.dave.wapictures.tracklist;
+package com.application.dave.wapictures.profile;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -15,15 +15,15 @@ import com.application.dave.wapictures.utils.Utils;
 import java.util.List;
 
 
-public class TrackListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class MontlyProfileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<Profile> items;
     private OnTrackItemClickListener listener;
     private OnTrackLoadMoreClickListener listener2;
     private static final int VIEW_TYPE_FOOTER = 1;
     private static final int VIEW_TYPE_CELL = 0;
 
-    public TrackListAdapter(List<Profile> devices, OnTrackItemClickListener lst,
-                            OnTrackLoadMoreClickListener lst2) {
+    public MontlyProfileListAdapter(List<Profile> devices, OnTrackItemClickListener lst,
+                                    OnTrackLoadMoreClickListener lst2) {
         items = devices;
         listener = lst;
         listener2 = lst2;
@@ -36,12 +36,12 @@ public class TrackListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         if (viewType == VIEW_TYPE_FOOTER) {
             View view = LayoutInflater.from(viewGroup.getContext())
                     .inflate(R.layout.load_more_track_button, viewGroup, false);
-            return new TrackListAdapter.RetrieveMoreTrackViewHolder(view);
+            return new MontlyProfileListAdapter.RetrieveMoreTrackViewHolder(view);
         }
 
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.track_item, viewGroup, false);
-        return new TrackListAdapter.ViewHolder(view);
+        return new MontlyProfileListAdapter.ViewHolder(view);
     }
 
     @Override

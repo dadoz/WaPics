@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:name=".SoundtrackApplication"
         android:theme="@style/AppTheme">
-        <activity android:name=".tracklist.TrackListActivity">
+        <activity android:name=".profile.ProfileListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

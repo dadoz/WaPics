@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.application.dave.wapictures.tracklist.TrackListActivity;
+import com.application.dave.wapictures.profile.ProfileListActivity;
 import com.application.dave.wapictures.ui.TrackInputDataView;
 
 import butterknife.BindView;
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
-        Intent intent = TrackListActivity.buildIntent(this, trackInputDataView.getcountry(),
+        Intent intent = ProfileListActivity.buildIntent(this, trackInputDataView.getcountry(),
                 trackInputDataView.getpageSize(),
                 trackInputDataView.hasLyricsCheckbox() ? "1" : "0", INIT_PAGE);
         startActivity(intent);

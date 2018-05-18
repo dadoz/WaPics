@@ -17,9 +17,24 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         style="@style/Widget.AppCompat.ProgressBar"/>
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/trackRecyclerViewId"
-        android:visibility="gone"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/trackRecyclerViewId"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <com.application.dave.wapictures.ui.PersonalProfileView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+        <fragment
+            android:id="@+id/profilePictureByMonthFragmentId"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:name="com.application.dave.wapictures.ui.fragments.ProfilePicturesByMonthFragment"/>
+    </LinearLayout>
 </FrameLayout>

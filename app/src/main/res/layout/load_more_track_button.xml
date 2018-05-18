@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Button
+<android.support.design.widget.FloatingActionButton
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/loadMoreTrackButtonId"
     android:layout_gravity="center_horizontal"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:textColor="@android:color/white"
-    android:backgroundTint="@color/colorPrimary"
-    android:text="@string/load_more_track_text"/>
+    android:backgroundTint="@color/colorPrimary"/>
 
