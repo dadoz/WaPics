@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import com.application.dave.wapictures.R;
 import com.application.dave.wapictures.data.base.SimpleSectionedRecyclerViewAdapter;
 import com.application.dave.wapictures.data.model.Profile;
-import com.application.dave.wapictures.profile.ItemViewHolder;
 import com.application.dave.wapictures.profile.ProfileContract;
 import com.application.dave.wapictures.profile.ProfilePresenter;
 
@@ -54,10 +53,8 @@ public class ProfilePicturesByMonthFragment extends DaggerFragment implements Pr
     }
 
     private void initRecyclerView(List<Profile> items) {
-        ItemViewHolder itemViewHolder = new ItemViewHolder(getLayoutInflater()
-                .inflate(R.layout.track_item, ((ViewGroup) getView()), false));
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(new SimpleSectionedRecyclerViewAdapter(items, itemViewHolder));
+        recyclerView.setAdapter(new SimpleSectionedRecyclerViewAdapter(items));
     }
 
     @Override

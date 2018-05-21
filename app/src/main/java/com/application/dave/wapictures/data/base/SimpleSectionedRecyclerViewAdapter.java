@@ -9,16 +9,15 @@ import android.widget.TextView;
 import com.application.dave.wapictures.R;
 import com.application.dave.wapictures.data.base.sectionedRvAdapter.BaseItemViewHolder;
 import com.application.dave.wapictures.data.base.sectionedRvAdapter.SectionedRecyclerViewAdapter;
+import com.application.dave.wapictures.profile.ItemViewHolder;
 
 import java.util.List;
 
 public class SimpleSectionedRecyclerViewAdapter<H extends BaseItemViewHolder, T>
         extends SectionedRecyclerViewAdapter<SimpleSectionedRecyclerViewAdapter.SubheaderViewHolder, H> {
-    private final H itemViewHolder;
     private final List<T> items;
 
-    public SimpleSectionedRecyclerViewAdapter(List<T> items, H itemViewHolder) {
-        this.itemViewHolder = itemViewHolder;
+    public SimpleSectionedRecyclerViewAdapter(List<T> items) {
         this.items = items;
     }
     @Override
@@ -34,7 +33,9 @@ public class SimpleSectionedRecyclerViewAdapter<H extends BaseItemViewHolder, T>
 
     @Override
     public H onCreateItemViewHolder(ViewGroup parent, int viewType) {
-        return itemViewHolder;
+        return (H) new ItemViewHolder(LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.track_item, null, false));
+
     }
 
     @Override
@@ -45,7 +46,7 @@ public class SimpleSectionedRecyclerViewAdapter<H extends BaseItemViewHolder, T>
     @Override
     public void onBindItemViewHolder(H holder, int position) {
         //Setup item view
-        itemViewHolder.render(items.get(position));
+        holder.render(items.get(position));
     }
 
     @Override
