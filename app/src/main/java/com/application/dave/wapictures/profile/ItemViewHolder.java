@@ -7,6 +7,7 @@ import android.widget.TextView;
 import com.application.dave.wapictures.R;
 import com.application.dave.wapictures.data.base.sectionedRvAdapter.BaseItemViewHolder;
 import com.application.dave.wapictures.data.model.Profile;
+import com.application.dave.wapictures.utils.Utils;
 
 /**
  * Track view holder
@@ -29,7 +30,7 @@ public class ItemViewHolder extends BaseItemViewHolder<Profile> {
 
     @Override
     public void render(Profile item) {
+        trackNameTextview.setText(item.getName());
+        Utils.renderIcon(avatarImageView, item.getAvatarUrl());
     }
-
-
 }

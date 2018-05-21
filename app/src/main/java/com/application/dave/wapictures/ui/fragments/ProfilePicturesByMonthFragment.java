@@ -15,6 +15,8 @@ import com.application.dave.wapictures.data.model.Profile;
 import com.application.dave.wapictures.profile.ProfileContract;
 import com.application.dave.wapictures.profile.ProfilePresenter;
 
+import org.joda.time.Months;
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -54,7 +56,12 @@ public class ProfilePicturesByMonthFragment extends DaggerFragment implements Pr
 
     private void initRecyclerView(List<Profile> items) {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(new SimpleSectionedRecyclerViewAdapter(items));
+        recyclerView.setAdapter(new SimpleSectionedRecyclerViewAdapter(items) {
+            @Override
+            protected boolean onPlaceSybheaderCondition(Object profile1, Object profile2) {
+                return Months.monthsBetween(((Profile) profile1).getDate(), ((Profile) profile2).getDate()).getMonths() > 0;
+            }
+        });
     }
 
     @Override

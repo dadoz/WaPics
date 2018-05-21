@@ -75,6 +75,7 @@ dependencies {
     //butterknife
     implementation "com.jakewharton:butterknife:$rootProject.butterknifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterknifeVersion"
+    implementation 'joda-time:joda-time:2.9.9'
     //test junit
     testImplementation "junit:junit:$rootProject.junitVersion"
 }

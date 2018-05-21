@@ -13,7 +13,7 @@ import com.application.dave.wapictures.profile.ItemViewHolder;
 
 import java.util.List;
 
-public class SimpleSectionedRecyclerViewAdapter<H extends BaseItemViewHolder, T>
+public abstract class SimpleSectionedRecyclerViewAdapter<H extends BaseItemViewHolder, T>
         extends SectionedRecyclerViewAdapter<SimpleSectionedRecyclerViewAdapter.SubheaderViewHolder, H> {
     private final List<T> items;
 
@@ -23,8 +23,10 @@ public class SimpleSectionedRecyclerViewAdapter<H extends BaseItemViewHolder, T>
     @Override
     public boolean onPlaceSubheaderBetweenItems(int position) {
         //return true if you want to place subheader between two neighboring items
-        return true;
+        return position > 0 && onPlaceSybheaderCondition(items.get(position), items.get(position -1));
     }
+
+    protected abstract boolean onPlaceSybheaderCondition(T t, T t1);
 
     @Override
     public SubheaderViewHolder onCreateSubheaderViewHolder(ViewGroup parent, int viewType) {
