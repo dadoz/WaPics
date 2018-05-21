@@ -4,6 +4,7 @@ import android.util.Log;
 import android.util.SparseArray;
 
 import com.application.dave.wapictures.data.ProfileRepository;
+import com.application.dave.wapictures.data.model.Profile;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -16,6 +17,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Action;
 import io.reactivex.schedulers.Schedulers;
+import io.reactivex.subjects.BehaviorSubject;
 
 @Singleton
 public class ProfilePresenter implements ProfileContract.ProfilePresenterInterface {
@@ -25,6 +27,8 @@ public class ProfilePresenter implements ProfileContract.ProfilePresenterInterfa
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
     protected ProgressLoader loader;
     private SparseArray<String> params;
+
+    public BehaviorSubject<List<Profile>> profileSubject = BehaviorSubject.create();
 
     @Inject
     ProfilePresenter(ProfileRepository repository) {
@@ -81,12 +85,8 @@ public class ProfilePresenter implements ProfileContract.ProfilePresenterInterfa
                 .compose(composeLoaderTransformer(loader))
                 .doOnError(Throwable::printStackTrace)
                 .subscribe(
-                        items -> {
-                            trackView.get().onRenderData(items);
-                        },
-                        error -> {
-                            trackView.get().onError(error.getMessage());
-                        }));
+                        items -> trackView.get().onRenderData(items),
+                        error -> trackView.get().onError(error.getMessage())));
     }
 
 

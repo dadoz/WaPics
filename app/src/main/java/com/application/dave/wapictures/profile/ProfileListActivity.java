@@ -100,6 +100,7 @@ public class ProfileListActivity extends DaggerAppCompatActivity implements Prof
 
     @Override
     public void onRenderData(List<Profile> items) {
+        presenter.profileSubject.onNext(items);
         progressBar.setVisibility(View.GONE);
         emptyView.setVisibility(View.GONE);
         initRecyclerView(items);

@@ -18,7 +18,7 @@ import dagger.android.ContributesAndroidInjector;
 @Module
 public abstract class ActivityBindingModule {
     @ActivityScoped
-    @ContributesAndroidInjector(modules = ProfilePresenterModule.class)
+    @ContributesAndroidInjector(modules = {ProfilePresenterModule.class, FragmentBindingModule.class})
     abstract ProfileListActivity tasksActivity();
 
     @ActivityScoped

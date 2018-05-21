@@ -7,6 +7,7 @@ import dagger.android.DaggerApplication;
 import io.realm.Realm;
 
 public class SoundtrackApplication extends DaggerApplication {
+
     @Override
     protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
         return getComponent();
