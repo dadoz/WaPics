@@ -53,8 +53,11 @@ public class ProfilePicturesByMonthFragment extends DaggerFragment implements Pr
     }
 
     private void initRecyclerView(List<Profile> items) {
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
-        recyclerView.setAdapter(new MonthlyRVAdapter(items));
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 1);
+        recyclerView.setLayoutManager(gridLayoutManager);
+        MonthlyRVAdapter adapter = new MonthlyRVAdapter(items);
+        adapter.setGridLayoutManager(gridLayoutManager);
+        recyclerView.setAdapter(adapter);
     }
 
     @Override

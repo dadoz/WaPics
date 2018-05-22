@@ -49,7 +49,6 @@ public abstract class SimpleSectionedRecyclerViewAdapterAbs<H extends BaseItemVi
         ((SubheaderViewHolder) subheaderHolder).titleTextView.setText(getSubHeaderLabel(nextItemPosition));
     }
 
-
     /**
      * subheader view holder
      */
