@@ -3,19 +3,17 @@ package com.application.dave.wapictures.ui.fragments;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.application.dave.wapictures.R;
-import com.application.dave.wapictures.data.base.SimpleSectionedRecyclerViewAdapter;
 import com.application.dave.wapictures.data.model.Profile;
+import com.application.dave.wapictures.profile.MonthlyRVAdapter;
 import com.application.dave.wapictures.profile.ProfileContract;
 import com.application.dave.wapictures.profile.ProfilePresenter;
-
-import org.joda.time.Months;
 
 import java.util.List;
 
@@ -55,13 +53,8 @@ public class ProfilePicturesByMonthFragment extends DaggerFragment implements Pr
     }
 
     private void initRecyclerView(List<Profile> items) {
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(new SimpleSectionedRecyclerViewAdapter(items) {
-            @Override
-            protected boolean onPlaceSybheaderCondition(Object profile1, Object profile2) {
-                return Months.monthsBetween(((Profile) profile1).getDate(), ((Profile) profile2).getDate()).getMonths() > 0;
-            }
-        });
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
+        recyclerView.setAdapter(new MonthlyRVAdapter(items));
     }
 
     @Override

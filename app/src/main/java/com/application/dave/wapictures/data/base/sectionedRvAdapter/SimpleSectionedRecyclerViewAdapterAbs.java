@@ -1,4 +1,4 @@
-package com.application.dave.wapictures.data.base;
+package com.application.dave.wapictures.data.base.sectionedRvAdapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,26 +7,20 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.application.dave.wapictures.R;
-import com.application.dave.wapictures.data.base.sectionedRvAdapter.BaseItemViewHolder;
-import com.application.dave.wapictures.data.base.sectionedRvAdapter.SectionedRecyclerViewAdapter;
-import com.application.dave.wapictures.profile.ItemViewHolder;
 
 import java.util.List;
 
-public abstract class SimpleSectionedRecyclerViewAdapter<H extends BaseItemViewHolder, T>
-        extends SectionedRecyclerViewAdapter<SimpleSectionedRecyclerViewAdapter.SubheaderViewHolder, H> {
-    private final List<T> items;
+public abstract class SimpleSectionedRecyclerViewAdapterAbs<H extends BaseItemViewHolder, T>
+        extends SectionedRecyclerViewAdapter<SimpleSectionedRecyclerViewAdapterAbs.SubheaderViewHolder, H> {
+    protected final List<T> items;
 
-    public SimpleSectionedRecyclerViewAdapter(List<T> items) {
+    public SimpleSectionedRecyclerViewAdapterAbs(List<T> items) {
         this.items = items;
     }
     @Override
     public boolean onPlaceSubheaderBetweenItems(int position) {
-        //return true if you want to place subheader between two neighboring items
-        return position > 0 && onPlaceSybheaderCondition(items.get(position), items.get(position -1));
+        return position > 0 && onPlaceSubHeaderCondition(items.get(position), items.get(position -1));
     }
-
-    protected abstract boolean onPlaceSybheaderCondition(T t, T t1);
 
     @Override
     public SubheaderViewHolder onCreateSubheaderViewHolder(ViewGroup parent, int viewType) {
@@ -35,8 +29,7 @@ public abstract class SimpleSectionedRecyclerViewAdapter<H extends BaseItemViewH
 
     @Override
     public H onCreateItemViewHolder(ViewGroup parent, int viewType) {
-        return (H) new ItemViewHolder(LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.track_item, null, false));
+        return onCreateItemViewHolderAbs(parent);
 
     }
 
@@ -53,11 +46,12 @@ public abstract class SimpleSectionedRecyclerViewAdapter<H extends BaseItemViewH
 
     @Override
     public void onBindSubheaderViewHolder(RecyclerView.ViewHolder subheaderHolder, int nextItemPosition) {
-        ((SubheaderViewHolder) subheaderHolder).titleTextView.setText("balblallbla");
+        ((SubheaderViewHolder) subheaderHolder).titleTextView.setText(getSubHeaderLabel(nextItemPosition));
     }
 
+
     /**
-     *
+     * subheader view holder
      */
     public class SubheaderViewHolder extends RecyclerView.ViewHolder {
         private final TextView titleTextView;
@@ -69,16 +63,26 @@ public abstract class SimpleSectionedRecyclerViewAdapter<H extends BaseItemViewH
         }
     }
 
+    /**
+     *
+     * @param t
+     * @param t1
+     * @return
+     */
+    protected abstract boolean onPlaceSubHeaderCondition(T t, T t1);
 
+    /**
+     *
+     * @param parent
+     * @return
+     */
+    protected abstract H onCreateItemViewHolderAbs(ViewGroup parent);
 
-//
-//    /**
-//     *
-//     */
-//    public static class ItemViewHolder extends RecyclerView.ViewHolder {
-//        public ItemViewHolder(View itemView) {
-//            super(itemView);
-//        }
-//    }
+    /**
+     *
+     * @param nextItemPosition
+     * @return
+     */
+    protected abstract String getSubHeaderLabel(int nextItemPosition);
 
 }
