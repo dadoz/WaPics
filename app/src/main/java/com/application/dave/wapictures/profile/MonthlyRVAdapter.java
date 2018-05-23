@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import com.application.dave.wapictures.R;
 import com.application.dave.wapictures.data.base.sectionedRvAdapter.SimpleSectionedRecyclerViewAdapterAbs;
 import com.application.dave.wapictures.data.model.Profile;
-import com.application.dave.wapictures.profile.ItemViewHolder;
 
 import org.joda.time.Months;
 
@@ -19,7 +18,7 @@ public class MonthlyRVAdapter extends SimpleSectionedRecyclerViewAdapterAbs<Item
 
     @Override
     protected boolean onPlaceSubHeaderCondition(Profile profile1, Profile profile2) {
-        return Months.monthsBetween(profile1.getDate(), profile2.getDate()).getMonths() > 0;
+        return Months.monthsBetween(profile2.getDate(), profile1.getDate()).getMonths() > 0;
     }
 
     @Override

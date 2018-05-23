@@ -2,6 +2,8 @@ package com.application.dave.wapictures.data;
 
 import android.content.Context;
 
+import com.application.dave.wapictures.data.cursor.Cursor;
+import com.application.dave.wapictures.data.cursor.TrackCursorDataSource;
 import com.application.dave.wapictures.data.local.Local;
 import com.application.dave.wapictures.data.local.TrackLocalDataSource;
 import com.application.dave.wapictures.data.mock.Mock;
@@ -22,6 +24,12 @@ public class ProfileRepositoryModule {
         return Realm.getDefaultInstance();
     }
 
+    @Provides
+    @Singleton
+    @Cursor
+    TrackDataSource provideProfileCursorDataSource(Context context) {
+        return new TrackCursorDataSource(context);
+    }
     @Provides
     @Singleton
     @Local

@@ -7,17 +7,21 @@ import com.application.dave.wapictures.data.ProfileRepository;
 import com.application.dave.wapictures.data.model.Profile;
 
 import java.lang.ref.WeakReference;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import io.reactivex.Observable;
 import io.reactivex.ObservableTransformer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Action;
 import io.reactivex.schedulers.Schedulers;
 import io.reactivex.subjects.BehaviorSubject;
+
+import static io.reactivex.internal.operators.single.SingleInternalHelper.toObservable;
 
 @Singleton
 public class ProfilePresenter implements ProfileContract.ProfilePresenterInterface {
@@ -115,6 +119,14 @@ public class ProfilePresenter implements ProfileContract.ProfilePresenterInterfa
         int nextPage = Integer.parseInt(params.get(0)) + 1;
         params.setValueAt(0, Integer.toString(nextPage));
         retrieveItems(params);
+    }
+
+    public Observable<List<Profile>> getProfileSubject() {
+        return profileSubject
+                .map(list -> {
+                    list.sort((o1, o2) -> o1.getDate().compareTo(o2.getDate()));
+                    return list;
+                });
     }
 
     /**

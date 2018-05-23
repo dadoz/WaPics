@@ -1,7 +1,7 @@
 package com.application.dave.wapictures.data;
 
+import com.application.dave.wapictures.data.cursor.Cursor;
 import com.application.dave.wapictures.data.local.Local;
-import com.application.dave.wapictures.data.mock.Mock;
 import com.application.dave.wapictures.data.model.Profile;
 import com.application.dave.wapictures.utils.Utils;
 
@@ -22,7 +22,7 @@ public class ProfileRepository {
     private final TrackDataSource networkDataSource;
 
     @Inject
-    ProfileRepository(@Local TrackDataSource localDataSource, @Mock TrackDataSource networkDataSource) {
+    ProfileRepository(@Local TrackDataSource localDataSource, @Cursor TrackDataSource networkDataSource) {
         this.localDataSource = localDataSource;
         this.networkDataSource = networkDataSource;
     }

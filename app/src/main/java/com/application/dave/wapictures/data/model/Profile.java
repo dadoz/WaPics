@@ -28,4 +28,12 @@ public class Profile extends RealmObject {
     public DateTime getDate() {
         return DateTime.parse(date);
     }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 }

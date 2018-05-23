@@ -43,8 +43,13 @@ public class ProfilePicturesByMonthFragment extends DaggerFragment implements Pr
         return view;
     }
 
+    /**
+     * subscribe on subject (sending items)
+     */
     private void subscribeOnSubject() {
-        disposable = presenter.profileSubject.subscribe(this::initRecyclerView);
+        disposable = presenter
+                .getProfileSubject()
+                .subscribe(this::initRecyclerView);
     }
 
     @Override
@@ -53,7 +58,7 @@ public class ProfilePicturesByMonthFragment extends DaggerFragment implements Pr
     }
 
     private void initRecyclerView(List<Profile> items) {
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 1);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 4);
         recyclerView.setLayoutManager(gridLayoutManager);
         MonthlyRVAdapter adapter = new MonthlyRVAdapter(items);
         adapter.setGridLayoutManager(gridLayoutManager);
