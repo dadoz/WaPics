@@ -36,4 +36,12 @@ public class Profile extends RealmObject {
     public void setDate(String date) {
         this.date = date;
     }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

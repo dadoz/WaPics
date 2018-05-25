@@ -29,6 +29,6 @@ public class MonthlyRVAdapter extends SimpleSectionedRecyclerViewAdapterAbs<Item
 
     @Override
     protected String getSubHeaderLabel(int nextItemPosition) {
-        return items.get(nextItemPosition).getDate().toString("MMMM");
+        return items.get(nextItemPosition).getDate() != null ? items.get(nextItemPosition).getDate().toString("MMMM") : "";
     }
 }
